@@ -1,0 +1,49 @@
+[gd_scene load_steps=14 format=3 uid="uid://gubhhug5sbja"]
+
+[ext_resource type="Script" path="res://Scenes/enemy/enemy_action_picker.gd" id="1_dws42"]
+[ext_resource type="Script" path="res://enemies/crab/crab_attack_action.gd" id="2_yqelp"]
+[ext_resource type="Texture2D" uid="uid://bfvi02kojsa00" path="res://art/tile_0103.png" id="3_50vhs"]
+[ext_resource type="Script" path="res://enemies/crab/crab_block_action.gd" id="3_i278m"]
+[ext_resource type="Script" path="res://enemies/crab/crab_mega_block_action.gd" id="4_8drmt"]
+[ext_resource type="Script" path="res://custom_resources/intent.gd" id="4_kjmjh"]
+[ext_resource type="AudioStream" uid="uid://de2ryat1pxq6" path="res://art/enemy_attack.ogg" id="5_o5cfi"]
+[ext_resource type="Texture2D" uid="uid://bi6pfjs32f820" path="res://art/tile_0101.png" id="6_ntj5u"]
+[ext_resource type="Texture2D" uid="uid://oe7v35ii8vrs" path="res://art/tile_0102.png" id="8_1yy4s"]
+[ext_resource type="AudioStream" uid="uid://k8m4o3hlwm7l" path="res://art/enemy_block.ogg" id="8_v5cxf"]
+
+[sub_resource type="Resource" id="Resource_aopld"]
+script = ExtResource("4_kjmjh")
+number = "7"
+icon = ExtResource("3_50vhs")
+
+[sub_resource type="Resource" id="Resource_ss5mf"]
+script = ExtResource("4_kjmjh")
+number = ""
+icon = ExtResource("6_ntj5u")
+
+[sub_resource type="Resource" id="Resource_7mgc0"]
+script = ExtResource("4_kjmjh")
+number = ""
+icon = ExtResource("8_1yy4s")
+
+[node name="CrabEnemyAI" type="Node"]
+script = ExtResource("1_dws42")
+
+[node name="AttackAction" type="Node" parent="."]
+script = ExtResource("2_yqelp")
+intent = SubResource("Resource_aopld")
+sound = ExtResource("5_o5cfi")
+type = 1
+chance_weight = 1.0
+
+[node name="BlockAction" type="Node" parent="."]
+script = ExtResource("3_i278m")
+intent = SubResource("Resource_ss5mf")
+sound = ExtResource("8_v5cxf")
+type = 1
+chance_weight = 1.0
+
+[node name="MegaBlock" type="Node" parent="."]
+script = ExtResource("4_8drmt")
+intent = SubResource("Resource_7mgc0")
+sound = ExtResource("8_v5cxf")
